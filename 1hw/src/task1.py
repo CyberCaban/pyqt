@@ -12,6 +12,10 @@ from PyQt6.QtCore import Qt, QPoint, QSize
 from PyQt6.QtGui import QFont, QPixmap
 
 
+def find_file(rel_path: str):
+    return str(Path(__file__).resolve().parent / rel_path)
+
+
 class Window(QMainWindow):
     def wrapLabel(self):
         font = QFont("FiraCode", 12, italic=True)
@@ -39,8 +43,8 @@ class Window(QMainWindow):
         return l
 
     def imageLabel(self, size):
-        picFile = "\\".join(__file__.split("\\")[:-1]) + "\\kity.jpg"
-        img = QPixmap(picFile)
+        picFile = find_file("public/kity.jpg")
+        img = QPixmap(str(picFile))
         l = QLabel()
         l.setScaledContents(True)
         l.setPixmap(img)
@@ -54,8 +58,8 @@ class Window(QMainWindow):
         return super().resizeEvent(a0)
 
     def __init__(self):
-        factor = 400
         super().__init__()
+        factor = 400
         self.setMinimumSize(factor, factor)
         self.imgLabel = self.imageLabel(factor)
         self.imgLabel.setParent(self)
@@ -69,9 +73,3 @@ class Window(QMainWindow):
         mainWidget = QWidget()
         mainWidget.setLayout(layout)
         self.setCentralWidget(mainWidget)
-
-
-app = QApplication([])
-win = Window()
-win.show()
-app.exec()
