@@ -1,0 +1,9 @@
+[project]
+name = "Base"
+version = "0.0.1"
+dependencies = [
+    "pyqt6>=6.8.0"
+]
+
+[project.scripts]
+devBase = "main:main"
