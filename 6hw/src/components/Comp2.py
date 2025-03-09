@@ -69,11 +69,19 @@ class NotesWidget(QWidget):
         self.listView = QListView()
         self.listView.setModel(self.notesModel)
 
+        self.addButton = QPushButton("Add Note")
+        self.editButton = QPushButton("Edit Note")
+
         layout = QVBoxLayout()
         layout.addWidget(self.listView)
+        layout.addWidget(self.addButton)
+        layout.addWidget(self.editButton)
         self.setLayout(layout)
 
         self.createContextMenu()
+
+        self.addButton.clicked.connect(self.addNote)
+        self.editButton.clicked.connect(self.editNote)
 
     def createContextMenu(self):
         self.listView.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
