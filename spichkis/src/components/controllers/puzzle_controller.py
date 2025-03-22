@@ -38,7 +38,8 @@ class PuzzleController:
         
     def check_solution(self):
         puzzle = self.model.get_current_puzzle()
-        removed_count = len(self.model.removed_matches)
+        print(self.model.removed_matches)
+        removed_count = len(self.model.removed_matches[puzzle.id])
         
         if removed_count == puzzle.target_matches_to_remove:
             if puzzle.solution_check(puzzle.matches):

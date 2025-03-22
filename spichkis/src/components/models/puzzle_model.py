@@ -1,6 +1,8 @@
 from dataclasses import dataclass
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 import math
+import json
+import os
 
 @dataclass
 class Match:
@@ -17,105 +19,52 @@ class Puzzle:
     description: str
     solution_check: callable
     difficulty: int = 1
+    id: str = ""
+    solution: Dict = None
 
 class PuzzleModel:
     def __init__(self):
-        self.puzzles = self._init_puzzles()
+        self.puzzles = self._load_puzzles()
         self.current_puzzle_index = 0
-        self.removed_matches = []
-    
-    def _init_puzzles(self) -> List[Puzzle]:
+        self.removed_matches = {}  # Dictionary to store removed matches for each puzzle
+        
+    def _load_puzzles(self) -> List[Puzzle]:
         puzzles = []
+        json_path = os.path.join(os.path.dirname(__file__), 'puzzles.json')
         
-        # Puzzle 1: 6 squares to 3 squares
-        puzzle1 = Puzzle(
-            matches=[
-                # Outer square
-                Match(100, 100, 200, 100),
-                Match(200, 100, 200, 200),
-                Match(200, 200, 100, 200),
-                Match(100, 200, 100, 100),
-                # Inner squares
-                Match(100, 100, 150, 150),
-                Match(150, 150, 200, 100),
-                Match(150, 150, 200, 200),
-                Match(150, 150, 100, 200),
-            ],
-            target_matches_to_remove=3,
-            description="Уберите 3 спички, чтобы получить 3 квадрата",
-            solution_check=lambda matches: self._check_squares_solution(matches),
-            difficulty=1
-        )
-        puzzles.append(puzzle1)
-        
-        # Puzzle 2: House to fish
-        puzzle2 = Puzzle(
-            matches=[
-                # House base
-                Match(100, 200, 200, 200),
-                # House walls
-                Match(100, 200, 150, 100),
-                Match(200, 200, 150, 100),
-                # Roof
-                Match(150, 100, 200, 150),
-                Match(150, 100, 100, 150),
-                # Door
-                Match(130, 200, 130, 160),
-                Match(170, 200, 170, 160),
-                Match(130, 160, 170, 160),
-            ],
-            target_matches_to_remove=2,
-            description="Уберите 2 спички, чтобы превратить дом в рыбу",
-            solution_check=lambda matches: self._check_house_to_fish_solution(matches),
-            difficulty=2
-        )
-        puzzles.append(puzzle2)
-        
-        # Add more puzzles here...
-        
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            
+        for puzzle_data in data['puzzles']:
+            matches = [Match(**match) for match in puzzle_data['matches']]
+            puzzle = Puzzle(
+                matches=matches,
+                target_matches_to_remove=puzzle_data['target_matches_to_remove'],
+                description=puzzle_data['description'],
+                difficulty=puzzle_data['difficulty'],
+                id=puzzle_data['id'],
+                solution=puzzle_data['solution'],
+                solution_check=self._check_solution
+            )
+            puzzles.append(puzzle)
+            
         return puzzles
     
-    def _check_squares_solution(self, matches: List[Match]) -> bool:
-        # Count visible matches that form squares
-        visible_matches = [m for m in matches if m.is_visible]
-        squares = 0
-        
-        # Check for 3x3 squares
-        for i in range(len(visible_matches)):
-            for j in range(i + 1, len(visible_matches)):
-                for k in range(j + 1, len(visible_matches)):
-                    if self._forms_square(visible_matches[i], visible_matches[j], visible_matches[k]):
-                        squares += 1
-        
-        return squares == 3
-    
-    def _check_house_to_fish_solution(self, matches: List[Match]) -> bool:
-        # Check if the remaining matches form a fish shape
-        visible_matches = [m for m in matches if m.is_visible]
-        # Implement fish shape checking logic
-        return True  # Placeholder
-    
-    def _forms_square(self, m1: Match, m2: Match, m3: Match) -> bool:
-        # Check if three matches form a square
-        points = [(m1.x1, m1.y1), (m1.x2, m1.y2),
-                 (m2.x1, m2.y1), (m2.x2, m2.y2),
-                 (m3.x1, m3.y1), (m3.x2, m3.y2)]
-        
-        # Check if we have exactly 4 unique points
-        unique_points = set(points)
-        if len(unique_points) != 4:
+    def _check_solution(self, matches: List[Match]) -> bool:
+        puzzle = self.get_current_puzzle()
+        if not puzzle.solution:
             return False
             
-        # Check if all sides are equal length
-        points_list = list(unique_points)
-        lengths = []
-        for i in range(4):
-            p1 = points_list[i]
-            p2 = points_list[(i + 1) % 4]
-            length = math.sqrt((p2[0] - p1[0])**2 + (p2[1] - p1[1])**2)
-            lengths.append(length)
+        # Check if removed matches match the solution
+        current_removed = self.removed_matches.get(puzzle.id, [])
+        if set(current_removed) != set(puzzle.solution['removed_matches']):
+            return False
             
-        return all(abs(lengths[0] - l) < 1 for l in lengths)
+        # Check if the number of removed matches matches the target
+        if len(current_removed) != puzzle.target_matches_to_remove:
+            return False
+            
+        return True
     
     def get_current_puzzle(self) -> Puzzle:
         return self.puzzles[self.current_puzzle_index]
@@ -125,26 +74,31 @@ class PuzzleModel:
         if not puzzle.matches[match_index].is_visible:
             return False
         puzzle.matches[match_index].is_visible = False
-        self.removed_matches.append(match_index)
+        
+        # Store removed match in the dictionary
+        if puzzle.id not in self.removed_matches:
+            self.removed_matches[puzzle.id] = []
+        self.removed_matches[puzzle.id].append(match_index)
+        
         return True
     
     def restore_last_match(self) -> bool:
-        if not self.removed_matches:
+        puzzle = self.get_current_puzzle()
+        if puzzle.id not in self.removed_matches or not self.removed_matches[puzzle.id]:
             return False
-        match_index = self.removed_matches.pop()
-        self.get_current_puzzle().matches[match_index].is_visible = True
+            
+        match_index = self.removed_matches[puzzle.id].pop()
+        puzzle.matches[match_index].is_visible = True
         return True
         
     def next_puzzle(self) -> bool:
         if self.current_puzzle_index < len(self.puzzles) - 1:
             self.current_puzzle_index += 1
-            self.removed_matches = []
             return True
         return False
         
     def previous_puzzle(self) -> bool:
         if self.current_puzzle_index > 0:
             self.current_puzzle_index -= 1
-            self.removed_matches = []
             return True
         return False 
