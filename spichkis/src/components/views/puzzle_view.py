@@ -41,9 +41,11 @@ class PuzzleView(QWidget):
         
     def set_matches(self, matches):
         self.matches = matches
-        # Reset selection if the selected match is no longer visible
-        if self.selected_match is not None and not matches[self.selected_match].is_visible:
-            self.selected_match = None
+        # Reset selection if the selected match is out of bounds or no longer visible
+        if self.selected_match is not None:
+            if (self.selected_match >= len(matches) or 
+                not matches[self.selected_match].is_visible):
+                self.selected_match = None
         self.update()
         
     def set_puzzle_info(self, description: str, current: int, total: int):
