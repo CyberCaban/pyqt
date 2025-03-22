@@ -41,6 +41,9 @@ class PuzzleView(QWidget):
         
     def set_matches(self, matches):
         self.matches = matches
+        # Reset selection if the selected match is no longer visible
+        if self.selected_match is not None and not matches[self.selected_match].is_visible:
+            self.selected_match = None
         self.update()
         
     def set_puzzle_info(self, description: str, current: int, total: int):
@@ -124,26 +127,38 @@ class PuzzleView(QWidget):
     def select_previous_match(self):
         visible_matches = [i for i, m in enumerate(self.matches) if m.is_visible]
         if not visible_matches:
+            self.selected_match = None
+            self.update()
             return
             
         if self.selected_match is None:
             self.selected_match = visible_matches[-1]
         else:
-            current_idx = visible_matches.index(self.selected_match)
-            self.selected_match = visible_matches[(current_idx - 1) % len(visible_matches)]
+            try:
+                current_idx = visible_matches.index(self.selected_match)
+                self.selected_match = visible_matches[(current_idx - 1) % len(visible_matches)]
+            except ValueError:
+                # If selected match is not in visible matches, select the last visible match
+                self.selected_match = visible_matches[-1]
             
         self.update()
         
     def select_next_match(self):
         visible_matches = [i for i, m in enumerate(self.matches) if m.is_visible]
         if not visible_matches:
+            self.selected_match = None
+            self.update()
             return
             
         if self.selected_match is None:
             self.selected_match = visible_matches[0]
         else:
-            current_idx = visible_matches.index(self.selected_match)
-            self.selected_match = visible_matches[(current_idx + 1) % len(visible_matches)]
+            try:
+                current_idx = visible_matches.index(self.selected_match)
+                self.selected_match = visible_matches[(current_idx + 1) % len(visible_matches)]
+            except ValueError:
+                # If selected match is not in visible matches, select the first visible match
+                self.selected_match = visible_matches[0]
             
         self.update()
         
