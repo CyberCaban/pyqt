@@ -78,7 +78,11 @@
       "difficulty": 2,
       "id": "squares_5_to_2",
       "solution": {
-        "removed_matches": [8, 7, 9]
+        "removed_matches": [
+          8,
+          7,
+          9
+        ]
       }
     },
     {
@@ -138,7 +142,10 @@
       "difficulty": 2,
       "id": "number_8_to_2",
       "solution": {
-        "removed_matches": [3, 6]
+        "removed_matches": [
+          3,
+          6
+        ]
       }
     },
     {
@@ -191,7 +198,10 @@
       "difficulty": 1,
       "id": "square_and_diagonal",
       "solution": {
-        "removed_matches": [4, 5]
+        "removed_matches": [
+          4,
+          5
+        ]
       }
     },
     {
@@ -237,7 +247,10 @@
       "difficulty": 1,
       "id": "house_to_triangle",
       "solution": {
-        "removed_matches": [3, 4]
+        "removed_matches": [
+          3,
+          4
+        ]
       }
     },
     {
@@ -304,7 +317,12 @@
       "difficulty": 3,
       "id": "cross_to_square",
       "solution": {
-        "removed_matches": [0, 2, 4, 5]
+        "removed_matches": [
+          0,
+          2,
+          4,
+          5
+        ]
       }
     },
     {
@@ -350,7 +368,11 @@
       "difficulty": 2,
       "id": "fish_to_arrow",
       "solution": {
-        "removed_matches": [0, 3, 4]
+        "removed_matches": [
+          0,
+          3,
+          4
+        ]
       }
     },
     {
@@ -431,7 +453,10 @@
       "difficulty": 3,
       "id": "hexagon_to_squares",
       "solution": {
-        "removed_matches": [0, 3]
+        "removed_matches": [
+          0,
+          3
+        ]
       }
     },
     {
@@ -610,7 +635,16 @@
       "difficulty": 3,
       "id": "3x3_to_2_squares",
       "solution": {
-        "removed_matches": [3, 5, 6, 8, 13, 14, 21, 22]
+        "removed_matches": [
+          3,
+          5,
+          6,
+          8,
+          13,
+          14,
+          21,
+          22
+        ]
       }
     },
     {
@@ -747,7 +781,10 @@
       "difficulty": 2,
       "id": "6_to_4_squares",
       "solution": {
-        "removed_matches": [7, 11]
+        "removed_matches": [
+          7,
+          11
+        ]
       }
     },
     {
@@ -814,335 +851,10 @@
       "difficulty": 3,
       "id": "3x3_to_3_squares",
       "solution": {
-        "removed_matches": [1, 5]
-      }
-    },
-    {
-      "matches": [
-        {
-          "x1": 150,
-          "y1": 50,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 150,
-          "x2": 100,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 150,
-          "x2": 150,
-          "y2": 50,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 250,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 250,
-          "x2": 100,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 50,
-          "y1": 100,
-          "x2": 100,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 250,
-          "y1": 100,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 50,
-          "y1": 350,
-          "x2": 80,
-          "y2": 275,
-          "is_visible": true
-        },
-        {
-          "x1": 80,
-          "y1": 275,
-          "x2": 110,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 110,
-          "y1": 200,
-          "x2": 140,
-          "y2": 125,
-          "is_visible": true
-        }
-      ],
-      "target_matches_to_remove": 3,
-      "description": "Уберите 3 спички, чтобы получить 5 маленьких звезд",
-      "difficulty": 3,
-      "id": "five_stars",
-      "solution": {
-        "removed_matches": [0, 3, 6]
-      }
-    },
-    {
-      "matches": [
-        {
-          "x1": 100,
-          "y1": 100,
-          "x2": 200,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 100,
-          "x2": 150,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 200,
-          "x2": 100,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 200,
-          "x2": 200,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 200,
-          "x2": 250,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 250,
-          "y1": 100,
-          "x2": 150,
-          "y2": 200,
-          "is_visible": true
-        }
-      ],
-      "target_matches_to_remove": 2,
-      "description": "Уберите 2 спички, чтобы осталось 2 треугольника",
-      "difficulty": 2,
-      "id": "four_triangles",
-      "solution": {
-        "removed_matches": [3, 5]
-      }
-    },
-    {
-      "matches": [
-        {
-          "x1": 100,
-          "y1": 100,
-          "x2": 200,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 100,
-          "x2": 200,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 200,
-          "x2": 100,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 200,
-          "x2": 100,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 100,
-          "x2": 150,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 150,
-          "x2": 200,
-          "y2": 100,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 150,
-          "x2": 200,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 150,
-          "x2": 100,
-          "y2": 200,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 100,
-          "x2": 150,
-          "y2": 200,
-          "is_visible": true
-        }
-      ],
-      "target_matches_to_remove": 2,
-      "description": "Уберите 2 спички, чтобы получить 3 треугольника",
-      "difficulty": 3,
-      "id": "five_squares_to_four",
-      "solution": {
-        "removed_matches": [4, 8]
-      }
-    },
-    {
-      "matches": [
-        {
-          "x1": 100,
-          "y1": 50,
-          "x2": 200,
-          "y2": 50,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 50,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 150,
-          "x2": 100,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 150,
-          "x2": 100,
-          "y2": 50,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 150,
-          "x2": 200,
-          "y2": 250,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 250,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        }
-      ],
-      "target_matches_to_remove": 2,
-      "description": "Уберите 2 спички, чтобы получить 3 квадрата",
-      "difficulty": 2,
-      "id": "two_squares_vertical",
-      "solution": {
-        "removed_matches": [4, 5]
-      }
-    },
-    {
-      "matches": [
-        {
-          "x1": 100,
-          "y1": 50,
-          "x2": 200,
-          "y2": 50,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 50,
-          "x2": 200,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 200,
-          "y1": 150,
-          "x2": 100,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 100,
-          "y1": 150,
-          "x2": 100,
-          "y2": 50,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 150,
-          "x2": 150,
-          "y2": 250,
-          "is_visible": true
-        },
-        {
-          "x1": 150,
-          "y1": 250,
-          "x2": 250,
-          "y2": 250,
-          "is_visible": true
-        },
-        {
-          "x1": 250,
-          "y1": 250,
-          "x2": 250,
-          "y2": 150,
-          "is_visible": true
-        },
-        {
-          "x1": 250,
-          "y1": 150,
-          "x2": 150,
-          "y2": 150,
-          "is_visible": true
-        }
-      ],
-      "target_matches_to_remove": 4,
-      "description": "Уберите 4 спички, чтобы получить 2 квадрата",
-      "difficulty": 3,
-      "id": "three_layers",
-      "solution": {
-        "removed_matches": [4, 5, 6, 7]
+        "removed_matches": [
+          1,
+          5
+        ]
       }
     },
     {
@@ -1173,14 +885,14 @@
           "y1": 150,
           "x2": 150,
           "y2": 150,
-          "is_visible": true
+          "is_visible": false
         },
         {
           "x1": 150,
           "y1": 150,
           "x2": 250,
           "y2": 150,
-          "is_visible": true
+          "is_visible": false
         },
         {
           "x1": 250,
@@ -1222,7 +934,7 @@
           "y1": 50,
           "x2": 150,
           "y2": 150,
-          "is_visible": true
+          "is_visible": false
         },
         {
           "x1": 250,
@@ -1250,7 +962,7 @@
           "y1": 150,
           "x2": 150,
           "y2": 250,
-          "is_visible": true
+          "is_visible": false
         },
         {
           "x1": 250,
@@ -1272,7 +984,1001 @@
       "difficulty": 3,
       "id": "squares_6_to_3_v2",
       "solution": {
-        "removed_matches": [3, 4, 10, 14]
+        "removed_matches": [
+          3,
+          4,
+          10,
+          14
+        ]
+      }
+    },
+    {
+      "matches": [
+        {
+          "x1": 30,
+          "y1": 330,
+          "x2": 90,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 90,
+          "y1": 240,
+          "x2": 150,
+          "y2": 150,
+          "is_visible": true
+        },
+        {
+          "x1": 150,
+          "y1": 150,
+          "x2": 210,
+          "y2": 60,
+          "is_visible": true
+        },
+        {
+          "x1": 210,
+          "y1": 60,
+          "x2": 270,
+          "y2": 150,
+          "is_visible": true
+        },
+        {
+          "x1": 270,
+          "y1": 150,
+          "x2": 330,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 330,
+          "y1": 240,
+          "x2": 390,
+          "y2": 330,
+          "is_visible": true
+        },
+        {
+          "x1": 90,
+          "y1": 240,
+          "x2": 150,
+          "y2": 330,
+          "is_visible": true
+        },
+        {
+          "x1": 150,
+          "y1": 330,
+          "x2": 210,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 210,
+          "y1": 240,
+          "x2": 270,
+          "y2": 330,
+          "is_visible": true
+        },
+        {
+          "x1": 270,
+          "y1": 330,
+          "x2": 330,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 210,
+          "y1": 240,
+          "x2": 270,
+          "y2": 150,
+          "is_visible": false
+        },
+        {
+          "x1": 210,
+          "y1": 240,
+          "x2": 150,
+          "y2": 150,
+          "is_visible": false
+        },
+        {
+          "x1": 90,
+          "y1": 240,
+          "x2": 210,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 210,
+          "y1": 240,
+          "x2": 330,
+          "y2": 240,
+          "is_visible": true
+        },
+        {
+          "x1": 150,
+          "y1": 150,
+          "x2": 270,
+          "y2": 150,
+          "is_visible": false
+        },
+        {
+          "x1": 30,
+          "y1": 330,
+          "x2": 150,
+          "y2": 330,
+          "is_visible": true
+        },
+        {
+          "x1": 150,
+          "y1": 330,
+          "x2": 270,
+          "y2": 330,
+          "is_visible": false
+        },
+        {
+          "x1": 270,
+          "y1": 330,
+          "x2": 390,
+          "y2": 330,
+          "is_visible": true
+        }
+      ],
+      "target_matches_to_remove": 4,
+      "description": "Уберите 4 спички, чтобы осталось только 5 треугольников.",
+      "difficulty": 1,
+      "id": "d22b714a-f19f-4ade-930b-18f1ae9d0a37",
+      "solution": {
+        "removed_matches": [
+          10,
+          11,
+          14,
+          16
+        ]
+      }
+    },
+    {
+      "matches": [
+        {
+          "x1": 96,
+          "y1": 96,
+          "x2": 96,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 96,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 96,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 384,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 384,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 384,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 288,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 192,
+          "x2": 384,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 96,
+          "x2": 288,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 192,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 96,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": false
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": false
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": false
+        }
+      ],
+      "target_matches_to_remove": 6,
+      "description": "Снимите 6 спичек так, чтобы не осталось ни одного квадрата.",
+      "difficulty": 1,
+      "id": "b383bf13-eb1b-4a0a-b5a3-ec31531ea093",
+      "solution": {
+        "removed_matches": [
+          1,
+          14,
+          15,
+          18,
+          19,
+          23
+        ]
+      }
+    },
+    {
+      "matches": [
+        {
+          "x1": 96,
+          "y1": 96,
+          "x2": 96,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 96,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 96,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 384,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": false
+        },
+        {
+          "x1": 288,
+          "y1": 384,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 288,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 192,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 384,
+          "y1": 96,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 96,
+          "x2": 288,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 192,
+          "y2": 96,
+          "is_visible": false
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 96,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": false
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": false
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        }
+      ],
+      "target_matches_to_remove": 8,
+      "description": "В изображённой на рисунке фигуре снимите восемь спичек так, чтобы осталось четыре равных квадрата.",
+      "difficulty": 1,
+      "id": "ab112829-3edc-48b1-9e6f-3567a835e4a3",
+      "solution": {
+        "removed_matches": [
+          1,
+          4,
+          7,
+          10,
+          13,
+          16,
+          19,
+          22
+        ]
+      }
+    },
+    {
+      "matches": [
+        {
+          "x1": 96,
+          "y1": 96,
+          "x2": 96,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 96,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 96,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 384,
+          "x2": 96,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 480,
+          "x2": 192,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 480,
+          "x2": 288,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 480,
+          "x2": 384,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 480,
+          "x2": 480,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 480,
+          "y1": 480,
+          "x2": 480,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 480,
+          "y1": 384,
+          "x2": 480,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 480,
+          "y1": 288,
+          "x2": 480,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 480,
+          "y1": 192,
+          "x2": 480,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 480,
+          "y1": 96,
+          "x2": 384,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 96,
+          "x2": 288,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 192,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 96,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 192,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 192,
+          "x2": 480,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 288,
+          "x2": 480,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 384,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 384,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 384,
+          "x2": 480,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 192,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 384,
+          "x2": 288,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 96,
+          "x2": 384,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 192,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 288,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 384,
+          "x2": 384,
+          "y2": 480,
+          "is_visible": true
+        }
+      ],
+      "target_matches_to_remove": 9,
+      "description": "Снимите 9 спичек так, чтобы не осталось ни одного квадрата.",
+      "difficulty": 1,
+      "id": "c8c96dd9-9544-4563-addc-7873fd4b125e",
+      "solution": {
+        "removed_matches": [
+          10,
+          20,
+          28,
+          31,
+          33,
+          35,
+          36,
+          38,
+          39
+        ]
+      }
+    },
+    {
+      "matches": [
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 96,
+          "x2": 288,
+          "y2": 96,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 96,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 192,
+          "x2": 192,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 192,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 288,
+          "y2": 192,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 288,
+          "x2": 192,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 288,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 384,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 288,
+          "x2": 384,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 384,
+          "y1": 384,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 384,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 96,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 96,
+          "y1": 384,
+          "x2": 96,
+          "y2": 288,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 288,
+          "x2": 192,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 288,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 384,
+          "x2": 192,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 480,
+          "x2": 288,
+          "y2": 480,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 480,
+          "x2": 288,
+          "y2": 384,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 480,
+          "x2": 192,
+          "y2": 576,
+          "is_visible": true
+        },
+        {
+          "x1": 192,
+          "y1": 576,
+          "x2": 288,
+          "y2": 576,
+          "is_visible": true
+        },
+        {
+          "x1": 288,
+          "y1": 576,
+          "x2": 288,
+          "y2": 480,
+          "is_visible": true
+        }
+      ],
+      "target_matches_to_remove": 6,
+      "description": "Снимите 6 спичек так, чтобы осталось только 4 квадрата.",
+      "difficulty": 1,
+      "id": "e0901ae5-73d8-4ae6-a413-665d4c0d311c",
+      "solution": {
+        "removed_matches": [
+          4,
+          5,
+          7,
+          11,
+          16,
+          18
+        ]
       }
     }
   ]

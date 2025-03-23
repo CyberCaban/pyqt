@@ -1,18 +1,15 @@
 from PyQt6.QtWidgets import (
-    QWidget, 
-    QPushButton, 
-    QVBoxLayout, 
+    QWidget,
+    QVBoxLayout,
     QHBoxLayout,
-    QGridLayout, 
-    QLabel,
-    QLineEdit,
-    QSpinBox,
-    QMessageBox
+    QMessageBox,
+    QFrame
 )
-from PyQt6.QtGui import QPainter, QPen, QColor, QFont
+from PyQt6.QtGui import QPainter, QPen, QColor, QFont, QPalette
 from PyQt6.QtCore import Qt, pyqtSignal, QPoint
 import math
 from dataclasses import dataclass
+from .editor_toolbox import EditorToolbox
 
 @dataclass
 class Match:
@@ -21,6 +18,27 @@ class Match:
     x2: int
     y2: int
     is_visible: bool = True
+
+class DrawingArea(QFrame):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setMinimumSize(400, 400)
+        self.setFrameStyle(QFrame.Shape.Box | QFrame.Shadow.Sunken)
+        
+        # Set white background
+        palette = self.palette()
+        palette.setColor(QPalette.ColorRole.Window, Qt.GlobalColor.white)
+        self.setPalette(palette)
+        self.setBackgroundRole(QPalette.ColorRole.Window)
+        self.setAutoFillBackground(True)
+        
+    def paintEvent(self, event):
+        if not hasattr(self.parent(), 'draw'):
+            return
+            
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        self.parent().draw(painter)
 
 class PuzzleEditorView(QWidget):
     puzzle_saved = pyqtSignal(list, str, str)  # matches, description, solution
@@ -37,72 +55,32 @@ class PuzzleEditorView(QWidget):
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
     def init_ui(self):
-        layout = QVBoxLayout()
-
-        # Control panel
-        control_panel = QGridLayout()
-
-        # Description input
-        description_label = QLabel("Описание:")
-        self.description_input = QLineEdit()
+        layout = QHBoxLayout()
         
-        # Solution help label
-        solution_help = QLabel("Решение (выберите спички правой кнопкой и нажмите пробел, чтобы добавить в решение)")
-        solution_help.setWordWrap(True)
+        # Drawing area
+        self.drawing_area = DrawingArea(self)
         
-        # Solution input (readonly, will be filled automatically)
-        solution_label = QLabel("Номера спичек в решении:")
-        self.solution_input = QLineEdit()
-        self.solution_input.setReadOnly(True)
-
-        # Save button
-        self.save_button = QPushButton("Сохранить пазл")
-        self.save_button.clicked.connect(self.save_puzzle)
-
-        # Delete button
-        self.delete_button = QPushButton("Удалить спичку")
-        self.delete_button.clicked.connect(self.delete_selected_match)
-        self.delete_button.setEnabled(False)
-
-        # Grid size controls
-        grid_controls = QHBoxLayout()
-        grid_label = QLabel("Размер сетки:")
-        self.grid_size = QSpinBox()
-        self.grid_size.setRange(1, 100)
-        self.grid_size.setValue(50)
-        self.grid_size.valueChanged.connect(self.update)
-        grid_controls.addWidget(grid_label)
-        grid_controls.addWidget(self.grid_size)
-        grid_controls.addStretch()
-
-        # Add widgets to control panel
-        control_panel.addWidget(description_label, 0, 0)
-        control_panel.addWidget(self.description_input, 0, 1, 1, 2)
-        control_panel.addWidget(solution_help, 1, 0, 1, 3)
-        control_panel.addWidget(solution_label, 2, 0)
-        control_panel.addWidget(self.solution_input, 2, 1, 1, 2)
-        control_panel.addWidget(self.save_button, 3, 0)
-        control_panel.addWidget(self.delete_button, 3, 1)
+        # Toolbox
+        self.toolbox = EditorToolbox()
+        self.toolbox.save_clicked.connect(self.save_puzzle)
+        self.toolbox.delete_clicked.connect(self.delete_selected_match)
+        self.toolbox.grid_size_changed.connect(self.update_drawing)
         
-        # Add layouts to main layout
-        layout.addLayout(control_panel)
-        layout.addLayout(grid_controls)
-        layout.addStretch()
+        # Add widgets to layout
+        layout.addWidget(self.drawing_area, stretch=1)
+        layout.addWidget(self.toolbox)
         self.setLayout(layout)
 
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-
+    def draw(self, painter: QPainter):
         # Draw grid
-        grid_size = self.grid_size.value()
+        grid_size = self.toolbox.get_grid_size()
         pen = QPen(QColor(200, 200, 200), 1)
         painter.setPen(pen)
         
-        for x in range(0, self.width(), grid_size):
-            painter.drawLine(x, 0, x, self.height())
-        for y in range(0, self.height(), grid_size):
-            painter.drawLine(0, y, self.width(), y)
+        for x in range(0, self.drawing_area.width(), grid_size):
+            painter.drawLine(x, 0, x, self.drawing_area.height())
+        for y in range(0, self.drawing_area.height(), grid_size):
+            painter.drawLine(0, y, self.drawing_area.width(), y)
 
         # Draw existing matches
         font = QFont()
@@ -132,28 +110,44 @@ class PuzzleEditorView(QWidget):
             painter.setPen(pen)
             painter.drawLine(self.start_pos, self.current_pos)
 
+    def update_drawing(self):
+        """Update the drawing area"""
+        self.drawing_area.update()
+
     def mousePressEvent(self, event):
+        if not self.drawing_area.geometry().contains(event.pos()):
+            return
+            
+        # Convert coordinates to drawing area space
+        pos = event.pos() - self.drawing_area.pos()
+        
         if event.button() == Qt.MouseButton.LeftButton:
             # Start drawing new match
             self.is_drawing = True
-            self.start_pos = self.snap_to_grid(event.pos())
+            self.start_pos = self.snap_to_grid(pos)
             self.current_pos = self.start_pos
             self.selected_match = None
-            self.delete_button.setEnabled(False)
+            self.toolbox.set_delete_button_enabled(False)
         elif event.button() == Qt.MouseButton.RightButton:
             # Select existing match
-            pos = event.pos()
             self.select_match_at_position(pos.x(), pos.y())
-            self.delete_button.setEnabled(self.selected_match is not None)
+            self.toolbox.set_delete_button_enabled(self.selected_match is not None)
 
     def mouseMoveEvent(self, event):
-        if self.is_drawing:
-            self.current_pos = self.snap_to_grid(event.pos())
-            self.update()
+        if not self.is_drawing:
+            return
+            
+        # Convert coordinates to drawing area space
+        pos = event.pos() - self.drawing_area.pos()
+        self.current_pos = self.snap_to_grid(pos)
+        self.update_drawing()
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton and self.is_drawing:
-            end_pos = self.snap_to_grid(event.pos())
+            # Convert coordinates to drawing area space
+            pos = event.pos() - self.drawing_area.pos()
+            end_pos = self.snap_to_grid(pos)
+            
             # Only add match if it has some length
             if self.start_pos != end_pos:
                 self.matches.append(Match(
@@ -165,10 +159,10 @@ class PuzzleEditorView(QWidget):
             self.is_drawing = False
             self.start_pos = None
             self.current_pos = None
-            self.update()
+            self.update_drawing()
 
     def snap_to_grid(self, pos):
-        grid_size = self.grid_size.value()
+        grid_size = self.toolbox.get_grid_size()
         x = round(pos.x() / grid_size) * grid_size
         y = round(pos.y() / grid_size) * grid_size
         return QPoint(x, y)
@@ -187,7 +181,7 @@ class PuzzleEditorView(QWidget):
             self.selected_match = closest_match
         else:
             self.selected_match = None
-        self.update()
+        self.update_drawing()
 
     def _distance_to_line(self, x, y, x1, y1, x2, y2):
         A = x - x1
@@ -227,14 +221,14 @@ class PuzzleEditorView(QWidget):
             # Remove match
             self.matches.pop(self.selected_match)
             self.selected_match = None
-            self.delete_button.setEnabled(False)
+            self.toolbox.set_delete_button_enabled(False)
             
             # Update solution input
             self._update_solution_input()
-            self.update()
+            self.update_drawing()
 
     def save_puzzle(self):
-        description = self.description_input.text()
+        description = self.toolbox.get_description()
         if not description:
             QMessageBox.warning(self, "Ошибка", "Введите описание пазла")
             return
@@ -253,11 +247,9 @@ class PuzzleEditorView(QWidget):
         # Clear form
         self.matches = []
         self.solution_matches = set()
-        self.description_input.clear()
-        self.solution_input.clear()
         self.selected_match = None
-        self.delete_button.setEnabled(False)
-        self.update()
+        self.toolbox.clear()
+        self.update_drawing()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Delete and self.selected_match is not None:
@@ -269,9 +261,9 @@ class PuzzleEditorView(QWidget):
             else:
                 self.solution_matches.add(self.selected_match)
             self._update_solution_input()
-            self.update()
+            self.update_drawing()
         else:
             super().keyPressEvent(event)
             
     def _update_solution_input(self):
-        self.solution_input.setText(", ".join(map(str, sorted(self.solution_matches)))) 
+        self.toolbox.set_solution(", ".join(map(str, sorted(self.solution_matches)))) 
