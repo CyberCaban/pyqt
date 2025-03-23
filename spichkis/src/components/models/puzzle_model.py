@@ -26,7 +26,7 @@ class PuzzleModel:
     def __init__(self):
         self.puzzles = self._load_puzzles()
         self.current_puzzle_index = 0
-        self.removed_matches = {}  # Dictionary to store removed matches for each puzzle
+        self.removed_matches = {} 
         
     def _load_puzzles(self) -> List[Puzzle]:
         puzzles = []
@@ -55,12 +55,12 @@ class PuzzleModel:
         if not puzzle.solution:
             return False
             
-        # Check if removed matches match the solution
+       
         current_removed = self.removed_matches.get(puzzle.id, [])
         if set(current_removed) != set(puzzle.solution['removed_matches']):
             return False
             
-        # Check if the number of removed matches matches the target
+       
         if len(current_removed) != puzzle.target_matches_to_remove:
             return False
             
@@ -75,7 +75,7 @@ class PuzzleModel:
             return False
         puzzle.matches[match_index].is_visible = False
         
-        # Store removed match in the dictionary
+       
         if puzzle.id not in self.removed_matches:
             self.removed_matches[puzzle.id] = []
         self.removed_matches[puzzle.id].append(match_index)

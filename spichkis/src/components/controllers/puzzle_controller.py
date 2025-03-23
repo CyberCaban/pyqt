@@ -13,13 +13,13 @@ class PuzzleController:
         self.update_view()
         
     def handle_match_click(self, match_index: int):
-        if match_index == -1:  # Restore signal
+        if match_index == -1: 
             if self.model.restore_last_match():
                 self.update_view()
-        elif match_index == -2:  # Previous puzzle
+        elif match_index == -2: 
             if self.model.previous_puzzle():
                 self.update_view()
-        elif match_index == -3:  # Next puzzle
+        elif match_index == -3: 
             if self.model.next_puzzle():
                 self.update_view()
         else:

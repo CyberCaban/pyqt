@@ -11,7 +11,7 @@ class Spichkis(QWidget):
     def init_ui(self):
         layout = QVBoxLayout()
         
-        # Создаем компоненты MVC
+       
         model = PuzzleModel()
         view = PuzzleView()
         self.controller = PuzzleController(model, view)
