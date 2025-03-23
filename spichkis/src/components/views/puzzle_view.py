@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
+from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QGridLayout, QLabel
 from PyQt6.QtGui import QPainter, QPen, QColor
 from PyQt6.QtCore import Qt, pyqtSignal
 import math
@@ -16,26 +16,36 @@ class PuzzleView(QWidget):
     def init_ui(self):
         layout = QVBoxLayout()
         
-        # Top controls
-        top_layout = QHBoxLayout()
+        # Control panel using grid layout
+        control_panel = QGridLayout()
         
-        self.restore_button = QPushButton("Вернуть спичку")
-        self.restore_button.clicked.connect(self.restore_button_clicked)
-        
+        # Navigation buttons
         self.prev_button = QPushButton("←")
         self.prev_button.clicked.connect(self.prev_button_clicked)
+        self.prev_button.setFixedWidth(40)
         
         self.next_button = QPushButton("→")
         self.next_button.clicked.connect(self.next_button_clicked)
+        self.next_button.setFixedWidth(40)
         
+        # Puzzle info label
         self.puzzle_label = QLabel()
+        self.puzzle_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        top_layout.addWidget(self.prev_button)
-        top_layout.addWidget(self.puzzle_label)
-        top_layout.addWidget(self.next_button)
-        top_layout.addWidget(self.restore_button)
+        # Restore button
+        self.restore_button = QPushButton("Вернуть спичку")
+        self.restore_button.clicked.connect(self.restore_button_clicked)
         
-        layout.addLayout(top_layout)
+        # Add widgets to grid
+        control_panel.addWidget(self.prev_button, 0, 0)
+        control_panel.addWidget(self.puzzle_label, 0, 1)
+        control_panel.addWidget(self.next_button, 0, 2)
+        control_panel.addWidget(self.restore_button, 0, 3)
+        
+        # Set column stretch to make puzzle label take most space
+        control_panel.setColumnStretch(1, 1)
+        
+        layout.addLayout(control_panel)
         layout.addStretch()
         self.setLayout(layout)
         

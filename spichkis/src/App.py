@@ -15,6 +15,7 @@ class Window(QMainWindow):
         self.content = QTabWidget()
         self.content.setMovable(True)
         self.setMinimumHeight(500)
+        self.setMinimumWidth(600)
         for tab in tabs:
             comp = tab["component"]
             name = tab["name"]
